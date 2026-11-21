@@ -124,6 +124,16 @@ class DatabaseHandler(context: Context): SQLiteOpenHelper(context, DATABASE_NAME
         private const val DATABASE_NAME = "banco.db"
         private const val TABLE_NAME = "cadastro"
         private const val DATABASE_VERSION = 1
-    }
 
+        @Volatile
+        private var INSTANCE: DatabaseHandler? = null
+
+        fun getInstance(context: Context): DatabaseHandler {
+            return INSTANCE ?: synchronized(this) {
+                val instance = DatabaseHandler(context.applicationContext)
+                INSTANCE = instance
+                return instance
+            }
+        }
+    }
 }
