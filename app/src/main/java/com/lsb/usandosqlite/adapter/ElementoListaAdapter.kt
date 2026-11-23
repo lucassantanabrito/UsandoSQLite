@@ -8,6 +8,7 @@ import android.widget.BaseAdapter
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.lsb.usandosqlite.R
 import com.lsb.usandosqlite.entity.Cadastro
 
@@ -40,6 +41,16 @@ class ElementoListaAdapter(val context: Context, val registros: MutableList<Cada
 
         tvNomeElementoLista.text = registros[pos].nome
         tvTelefoneElementoLista.text = registros[pos].telefone
+
+        if (pos % 2 == 0) {
+            ivIconeElementoLista.setImageResource(android.R.drawable.star_big_on)
+        } else {
+            ivIconeElementoLista.setImageResource(android.R.drawable.star_big_off)
+        }
+
+        btEditarElementoLista.setOnClickListener {
+            Toast.makeText(context, "Item $pos pressionado", Toast.LENGTH_SHORT).show()
+        }
 
         return view
     }
