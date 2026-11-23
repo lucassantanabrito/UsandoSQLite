@@ -1,6 +1,7 @@
 package com.lsb.usandosqlite
 
 import android.content.ContentValues
+import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.widget.Toast
@@ -93,7 +94,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun btListarOnClick() {
-        val registros = banco.listar()
+        /*val registros = banco.listar()
 
         val saida = StringBuilder()
 
@@ -108,7 +109,10 @@ class MainActivity : AppCompatActivity() {
             this,
             saida.toString(),
             Toast.LENGTH_SHORT
-        ).show()
+        ).show()*/
+
+        val intent = Intent(this, ListActivity::class.java)
+        startActivity(intent)
 
     }
 }
